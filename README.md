@@ -1,2 +1,2 @@
-# car-rental
-Car rental shop 
+# Car rental shop
+OOP pratice 
