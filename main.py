@@ -8,6 +8,15 @@ def main():
 
     time = datetime.datetime.now()
 
+    print("""     
+                _______
+               //  ||\ \\
+         _____//___||_\ \___
+         )  _          _    \\
+         |_/ \________/ \___|
+        ___\_/________\_/______
+    """)
+
     print("\n\tWELCOME TO CAR RENTAL SHOP!\n")
     print(f"\tCurrent date and time: {time}")
 
