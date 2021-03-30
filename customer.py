@@ -7,12 +7,28 @@ class Customer:
         self.bill = 0 
 
     
+    def customer_info(self):
+        first_name = input("Enter your first name: ")
+        last_name = input("Enter your last name: ")
+        
+        while True:
+            try: 
+                phone_num = int(input("Enter your phone number: "))
+                break
+            except ValueError:
+                print("Please enter a number!")
+          
+
     def rent_cars(self):
-        try: 
-            cars = int(input("How many cars do you want to rent? "))
-        except ValueError:
-            print("Please enter a number!")
-            return -1
+        self.customer_info()
+
+        while True:
+            try: 
+                cars = int(input("\nHow many cars do you want to rent? "))
+                break
+            except ValueError:
+                print("Please enter a number!")
+        
 
         if cars < 1:
             print("Number of cars should be more than zero!")
