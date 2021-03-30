@@ -1,21 +1,25 @@
 from car_rental import CarRental 
 from customer import Customer 
+import datetime 
 
 def main():
     cars_rental = CarRental(300)
     customer = Customer()
 
+    time = datetime.datetime.now()
+
     print("\n\tWELCOME TO CAR RENTAL SHOP!\n")
+    print(f"\tCurrent date and time: {time}")
 
     while True:
         print("""
-        ======== Car Rental Shop ========
+        ******** Car Rental Shop ********
         1. Display available cars
-        2. Rent a car on an hourly basis: $20 
-        3. Rent a car on a daily basis: $100
-        4. Rent a car on a weekly basis: $500
+        2. Rent a car on an hourly basis: $20/hour 
+        3. Rent a car on a daily basis: $100/day
+        4. Rent a car on a weekly basis: $500/week
         5. Return a car
-        6. Exit
+        6. Exit the program
         """)
 
         try:
@@ -40,7 +44,7 @@ def main():
             customer.rental_type = 3
 
         elif choice == 5:
-            customer.bill = cars.return_cars(customer.return_cars())
+            customer.bill = cars_rental.return_cars(customer.return_cars())
             customer.cars, customer.rental_type, customer.rental_time = 0,0,0    
 
         elif choice == 6: 

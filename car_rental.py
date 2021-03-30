@@ -2,7 +2,7 @@ import datetime
 
 class CarRental:
 
-    def __init__(self, stock):
+    def __init__(self, stock=0):
         self.stock = stock
     
 
@@ -12,7 +12,7 @@ class CarRental:
 
 
     def rent_car_hour(self, car):
-        if car < 0:
+        if car <= 0:
             print("The number of cars should be positive")
         
         elif car > self.stock:
@@ -30,7 +30,7 @@ class CarRental:
     
 
     def rent_car_daily(self, car):
-        if car < 0:
+        if car <= 0:
             print("The number of cars should be positive")
             
         elif car > self.stock:
@@ -68,6 +68,7 @@ class CarRental:
     def return_cars(self, request):
         cars, rental_type, rental_time = request
         bill = 0
+        rent = ""
 
         if cars and rental_type and rental_time: 
             self.stock += cars
@@ -75,21 +76,66 @@ class CarRental:
             rental_period = time - rental_time
         
             if rental_type == 1:
-                bill = round(rental_period.seconds / 3600) * 5 * cars 
+                rent = "Hourly base"
+                bill = round(rental_period.seconds / 3600) * 20 * cars 
                     
             elif rental_type == 2:
-                bill = round(rental_period.days) * 20 * cars 
+                rent = "Daily base"
+                bill = round(rental_period.days) * 100 * cars 
                     
             elif rental_type == 3:
-                bill = round(rental_period.days / 7) * 60 * cars
+                rent = "Weekly base"
+                bill = round(rental_period.days / 7) * 500 * cars
                 
             if (3 <= cars <= 5):
                 print("You are eligible for a promotion of 30% discount")
                 bill = bill * 0.7
 
-            print("Thanks for returning your car. Hope you enjoyed our service!")
-            print(f"That would be {bill}")
-                
+            print("Thank you for returning the car. Have a nice day!")
+            print(f"\nThe bill would be ${bill}")
+            print("Do you want to pay with cash or credit card?")
+
+            try: 
+                payment = int(input("Enter 1 for cash and 2 for credit card: "))
+            except ValueError:
+                print("Please enter a number!")
+
+            if payment == 1:
+                print("Thank you for your payment! Here is your receipt...")
+                print("\n--------------------------------------------------")
+                print("\t\tCAR RENTAL SHOP")
+                print(f"\tCars rented: {cars}")
+                print(f"\tRental type: {rent}")
+                print(f"\tRented on: {rental_time}")
+                print(f"\tReturned on: {time}")
+                print(f"\tTotal bill: ${bill}")
+                print("\tPayment type: cash")
+                print(f"\tPaid on: {time}")
+                print("\tThank you!")
+                print("--------------------------------------------------")
+        
+            elif payment == 2:
+                credit = input("Enter your credit card number: ")
+
+                if 18 > len(credit) > 14: 
+                    print("Thank you for your payment! Here is your receipt...")
+                    print("\n--------------------------------------------------")
+                    print("\t\tCAR RENTAL SHOP")
+                    print(f"\tCars rented: {cars}")
+                    print(f"\tRental type: {rent}")
+                    print(f"\tRented on: {rental_time}")
+                    print(f"\tReturned on: {time}")
+                    print(f"\tTotal bill: ${bill}")
+                    print("\tPayment type: credit card")
+                    print(f"\tPaid on: {time}")
+                    print("\tThank you!")
+                    print("--------------------------------------------------")
+                else:
+                    print("Please enter the valid credit card number!")
+            
+            else: 
+                print("Please enter 1 or 2 only!")
+
             return bill
 
         else:
