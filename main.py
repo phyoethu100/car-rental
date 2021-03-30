@@ -1,6 +1,6 @@
+import datetime 
 from car_rental import CarRental 
 from customer import Customer 
-import datetime 
 
 def main():
     cars_rental = CarRental(300)
