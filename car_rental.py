@@ -7,7 +7,7 @@ class CarRental:
     
 
     def display_cars(self):
-        print(f"We currenly have {self.stock} cars available to rent.")
+        print(f"We currently have {self.stock} cars available to rent.")
         return self.stock
 
 
